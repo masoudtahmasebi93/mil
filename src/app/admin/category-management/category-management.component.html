@@ -1,0 +1,52 @@
+<!-- category-management.component.html -->
+<div class="category-management">
+  <h2>{{ editingCategory ? 'Edit Category' : 'Add Category' }}</h2>
+
+  <form [formGroup]="categoryForm" (ngSubmit)="submitCategory()" class="category-form">
+    <mat-form-field appearance="fill">
+      <mat-label>Category Name</mat-label>
+      <input matInput formControlName="name" required />
+      <mat-error *ngIf="categoryForm.get('name')?.hasError('required')">
+        Name is required
+      </mat-error>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit">
+      {{ editingCategory ? 'Update Category' : 'Add Category' }}
+    </button>
+    <button
+      mat-button
+      type="button"
+      (click)="resetForm()"
+      *ngIf="editingCategory"
+    >
+      Cancel
+    </button>
+  </form>
+
+  <h2>Existing Categories</h2>
+  <table mat-table [dataSource]="categories" class="mat-elevation-z8 category-table">
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> ID </th>
+      <td mat-cell *matCellDef="let category"> {{ category.id }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let category"> {{ category.name }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef> Actions </th>
+      <td mat-cell *matCellDef="let category">
+        <button mat-button (click)="editCategory(category)">Edit</button>
+        <button mat-button color="warn" (click)="deleteCategory(category.id)">
+          Delete
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+</div>

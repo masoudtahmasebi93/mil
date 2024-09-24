@@ -1,0 +1,46 @@
+<mat-toolbar color="primary">
+  <span>{{ title }}</span>
+  &nbsp;
+  <span class="spacer">
+    &nbsp;
+     <button mat-stroked-button [matMenuTriggerFor]="menu" *ngFor="let item of filteredCategoriesList"
+             [routerLink]="['/categories', item.id]">&nbsp;{{ item.name }}&nbsp;</button>
+    &nbsp;
+  </span>
+
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item>Item 1</button>
+    <button mat-menu-item>Item 2</button>
+  </mat-menu>
+  <button mat-button (click)="navigateToBooking()">Book Appointment</button>
+
+</mat-toolbar>
+<div class="welcome-container">
+  <h1>Welcome to Armani Nail Salon</h1>
+
+  <!-- Search input field -->
+  <mat-form-field>
+    <mat-label>Search categories...</mat-label>
+    <input
+      matInput
+      type="text"
+      placeholder="Search categories..."
+      [(ngModel)]="searchTerm"
+      (ngModelChange)="onSearchTermChange()"
+    />
+  </mat-form-field>
+  <br>
+  <!-- Dropdown for Catalog selection -->
+  <mat-form-field appearance="fill">
+    <mat-label>Select Catalog</mat-label>
+    <mat-select [(ngModel)]="selectedCatalogId" (selectionChange)="onCatalogChange()">
+      <mat-option value="">All Catalogs</mat-option>
+      <mat-option *ngFor="let catalog of catalogs" [value]="catalog.id">
+        {{ catalog.name }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <!-- Display filtered categories -->
+  <app-category-list [categories]="filteredCategoriesList"></app-category-list>
+</div>

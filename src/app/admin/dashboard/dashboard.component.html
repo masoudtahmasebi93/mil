@@ -1,0 +1,12 @@
+<!-- dashboard.component.html -->
+<mat-toolbar color="primary" class="admin-toolbar">
+  <span>Armani Nail Salon Admin Panel</span>
+  <span class="spacer"></span>
+  <button mat-button routerLink="/admin/appointments">Appointments</button>
+  <button mat-button routerLink="/admin/catalog">Catalog</button>
+  <button mat-button (click)="logout()">Logout</button>
+</mat-toolbar>
+
+<mat-sidenav-container class="admin-content">
+  <router-outlet></router-outlet>
+</mat-sidenav-container>

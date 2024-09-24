@@ -1,0 +1,10 @@
+<div>
+  <p>Elapsed Time: {{ elapsedTime / 1000 | number: '1.0-0' }} seconds</p>
+  <button mat-button color="primary" (click)="startTimer()" [disabled]="timerInterval">
+    Start
+  </button>
+  <button mat-button color="accent" (click)="stopTimer()" [disabled]="!timerInterval">
+    Stop
+  </button>
+  <button mat-button (click)="resetTimer()">Reset</button>
+</div>

@@ -1,0 +1,62 @@
+<!-- appointment-list.component.html -->
+<h2>Appointments</h2>
+
+<table mat-table [dataSource]="appointments" class="mat-elevation-z8">
+  <!-- ID Column -->
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef> ID </th>
+    <td mat-cell *matCellDef="let appointment"> {{ appointment.id }} </td>
+  </ng-container>
+
+  <!-- Customer Name Column -->
+  <ng-container matColumnDef="customerName">
+    <th mat-header-cell *matHeaderCellDef> Customer </th>
+    <td mat-cell *matCellDef="let appointment"> {{ appointment.name }} </td>
+  </ng-container>
+
+  <!-- Date Column -->
+  <ng-container matColumnDef="date">
+    <th mat-header-cell *matHeaderCellDef> Date </th>
+    <td mat-cell *matCellDef="let appointment">
+      {{ appointment.date | date }} {{ appointment.time }}
+    </td>
+  </ng-container>
+
+  <!-- Status Column -->
+  <ng-container matColumnDef="status">
+    <th mat-header-cell *matHeaderCellDef> Status </th>
+    <td mat-cell *matCellDef="let appointment"> {{ appointment.status }} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="service">
+    <th mat-header-cell *matHeaderCellDef> Service </th>
+    <td mat-cell *matCellDef="let appointment">
+      {{ getServiceName(appointment.serviceId) }}
+    </td>
+  </ng-container>
+
+  <!-- Actions Column -->
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef> Actions </th>
+    <td mat-cell *matCellDef="let appointment">
+      <button
+        mat-button
+        color="accent"
+        [routerLink]="['/admin/appointments', appointment.id]"
+      >
+        View Details
+      </button>
+      <button
+        mat-button
+        color="warn"
+        (click)="deleteAppointment(appointment.id)"
+      >
+        Delete
+      </button>
+    </td>
+  </ng-container>
+
+  <!-- Header and Row Declarations -->
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>

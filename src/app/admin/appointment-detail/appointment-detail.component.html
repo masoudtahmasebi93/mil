@@ -1,0 +1,59 @@
+<h2>Appointment Details</h2>
+
+<form [formGroup]="appointmentForm" (ngSubmit)="updateAppointment()">
+  <mat-form-field appearance="fill">
+    <mat-label>Name</mat-label>
+    <input matInput formControlName="name" required />
+    <mat-error *ngIf="appointmentForm.get('name')?.hasError('required')">
+      Name is required
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Contact Email</mat-label>
+    <input matInput formControlName="contact" required />
+    <mat-error *ngIf="appointmentForm.get('contact')?.hasError('required')">
+      Contact email is required
+    </mat-error>
+    <mat-error *ngIf="appointmentForm.get('contact')?.hasError('email')">
+      Enter a valid email
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Date</mat-label>
+    <input matInput type="date" formControlName="date" required />
+    <mat-error *ngIf="appointmentForm.get('date')?.hasError('required')">
+      Date is required
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Time</mat-label>
+    <input matInput type="time" formControlName="time" required />
+    <mat-error *ngIf="appointmentForm.get('time')?.hasError('required')">
+      Time is required
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Status</mat-label>
+    <mat-select formControlName="status" required>
+      <mat-option *ngFor="let status of statuses" [value]="status">
+        {{ status }}
+      </mat-option>
+    </mat-select>
+    <mat-error *ngIf="appointmentForm.get('status')?.hasError('required')">
+      Status is required
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Notes</mat-label>
+    <textarea matInput formControlName="notes"></textarea>
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" type="submit">
+    Update Appointment
+  </button>
+</form>

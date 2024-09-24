@@ -1,0 +1,39 @@
+<div class="service-catalog">
+  <button mat-button color="accent" [routerLink]="['/']">
+    &larr; Back to Categories
+  </button>
+  <h2 *ngIf="category">Services in {{ category.name }}</h2>
+  <hr *ngIf="category">
+  <div *ngIf="services.length > 0; else noServices" class="service-grid">
+    <mat-card *ngFor="let service of services" class="service-card">
+      <mat-card-header>
+        <mat-card-title>{{ service.name }}</mat-card-title>
+        <mat-card-subtitle>${{ service.price }}</mat-card-subtitle>
+      </mat-card-header>
+      <img
+        mat-card-image
+        [src]="service.imageUrl"
+        alt="{{ service.name }}"
+        *ngIf="service.imageUrl"
+      />
+      <mat-card-content>
+        <p>{{ service.description }}</p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button
+          mat-button
+          color="primary"
+          [routerLink]="['/book']"
+          [queryParams]="{ serviceId: service.id }"
+        >
+          Book Now
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+
+  <!-- Optional: Handle case when no services are available -->
+  <ng-template #noServices>
+    <p>No services available in this category.</p>
+  </ng-template>
+</div>

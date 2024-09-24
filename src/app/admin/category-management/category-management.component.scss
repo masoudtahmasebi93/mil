@@ -1,0 +1,21 @@
+.category-management {
+  .category-form {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+    margin-bottom: 20px;
+
+    mat-form-field {
+      width: 100%;
+    }
+
+    button {
+      margin-top: 10px;
+    }
+  }
+
+  .category-table {
+    width: 100%;
+    overflow-x: auto;
+  }
+}

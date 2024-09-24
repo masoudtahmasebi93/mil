@@ -1,0 +1,13 @@
+<div *ngIf="appointmentData">
+  <h2>Appointment Confirmation</h2>
+  <mat-card>
+    <mat-card-content>
+      <p><strong>Name:</strong> {{ appointmentData.name }}</p>
+      <p><strong>Contact:</strong> {{ appointmentData.contact }}</p>
+      <p><strong>Service:</strong> {{ serviceName }}</p>
+      <p><strong>Date:</strong> {{ appointmentData.date | date }}</p>
+      <p><strong>Time:</strong> {{ appointmentData.time }}</p>
+    </mat-card-content>
+  </mat-card>
+  <button mat-button color="primary" routerLink="/">Back to Home</button>
+</div>
