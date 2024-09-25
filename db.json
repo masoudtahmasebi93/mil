@@ -20,24 +20,53 @@
         "4b33"
       ],
       "imageUrl": ""
+    },
+    {
+      "id": "6bfe",
+      "name": "Yellow",
+      "description": "yellow2",
+      "imageUrl": ""
     }
   ],
   "categories": [
     {
       "id": "4d2a",
-      "name": "Nail Polish"
+      "name": "Nail Polish",
+      "menuId": [
+        "16cd",
+        "8ec1"
+      ]
     },
     {
       "id": "4b33",
-      "name": "Nail Jelish"
+      "name": "Nail Jelish",
+      "menuId": [
+        "16cd",
+        "8ec1",
+        "6bfe"
+      ]
     },
     {
       "id": "d746",
-      "name": "Manicure"
+      "name": "Manicure",
+      "menuId": [
+        "8ec1"
+      ]
     },
     {
       "id": "3f0a",
-      "name": "Pedicure"
+      "name": "Pedicure",
+      "menuId": [
+        "16cd"
+      ]
+    },
+    {
+      "id": "d104",
+      "name": "ManiCuree",
+      "menuId": [
+        "8ec1",
+        "6bfe"
+      ]
     }
   ],
   "services": [

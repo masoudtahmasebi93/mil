@@ -19,17 +19,17 @@
       </mat-error>
     </mat-form-field>
 
-    <mat-form-field appearance="fill">
-      <mat-label>Category</mat-label>
-      <mat-select formControlName="categoryId" required multiple>
-        <mat-option *ngFor="let category of categories" [value]="category.id">
-          {{ category.name }}
-        </mat-option>
-      </mat-select>
-      <mat-error *ngIf="menuForm.get('categoryId')?.hasError('required')">
-        Category is required
-      </mat-error>
-    </mat-form-field>
+<!--    <mat-form-field appearance="fill">-->
+<!--      <mat-label>Category</mat-label>-->
+<!--      <mat-select formControlName="categoryId" required multiple>-->
+<!--        <mat-option *ngFor="let category of categories" [value]="category.id">-->
+<!--          {{ category.name }}-->
+<!--        </mat-option>-->
+<!--      </mat-select>-->
+<!--      <mat-error *ngIf="menuForm.get('categoryId')?.hasError('required')">-->
+<!--        Category is required-->
+<!--      </mat-error>-->
+<!--    </mat-form-field>-->
 
     <!--    <mat-form-field appearance="fill">-->
     <!--      <mat-label>Image</mat-label>-->
@@ -61,12 +61,12 @@
       <td mat-cell *matCellDef="let menu"> {{ menu.name }}</td>
     </ng-container>
 
-    <ng-container matColumnDef="category">
-      <th mat-header-cell *matHeaderCellDef> Category</th>
-      <td mat-cell *matCellDef="let menu">
-        {{ getMenuName(menu.categoryId) }}
-      </td>
-    </ng-container>
+<!--    <ng-container matColumnDef="category">-->
+<!--      <th mat-header-cell *matHeaderCellDef> Category</th>-->
+<!--      <td mat-cell *matCellDef="let menu">-->
+<!--        {{ getMenuName(menu.categoryId) }}-->
+<!--      </td>-->
+<!--    </ng-container>-->
 
 <!--    <ng-container matColumnDef="price">-->
 <!--      <th mat-header-cell *matHeaderCellDef> Price</th>-->

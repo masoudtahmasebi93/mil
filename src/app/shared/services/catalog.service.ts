@@ -9,7 +9,6 @@ export interface MenuItem {
   name: string;
   imageUrl?: string;
   description?: string;
-  categoryId: any;
 }
 
 export interface Category {
@@ -17,7 +16,7 @@ export interface Category {
   name: string;
   imageUrl?: string;
   description?: string;
-  menuId: number;
+  menuId: any;
 }
 
 export interface ServiceItem {
@@ -86,10 +85,10 @@ export class CatalogService {
     return this.http.post<MenuItem>(`${this.apiUrl}/menus`, menu);
   }
 
-  updateMenu(category: MenuItem): Observable<MenuItem> {
+  updateMenu(menu: MenuItem): Observable<MenuItem> {
     return this.http.put<MenuItem>(
-      `${this.apiUrl}/menus/${category.id}`,
-      category
+      `${this.apiUrl}/menus/${menu.id}`,
+      menu
     );
   }
 

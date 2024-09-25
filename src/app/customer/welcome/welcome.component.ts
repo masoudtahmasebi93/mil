@@ -110,8 +110,14 @@ export class WelcomeComponent implements OnInit {
 
   getCategoryName(cid: any) {
     return this.categories.find((category) =>
-      category.id === cid
+      category.id === cid.id
     );
 
+  }
+
+  getAllCategories(id: any) {
+    return this.categories.filter((category) =>
+      category?.menuId?.includes(id)
+    );
   }
 }

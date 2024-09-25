@@ -34,7 +34,7 @@ export class MenuManagementComponent implements OnInit {
   menuForm: FormGroup;
   editingMenu: MenuItem | null = null;
 
-  displayedColumns: string[] = ['name', 'category', 'image', 'actions'];
+  displayedColumns: string[] = ['name', 'image', 'actions'];
 
   constructor(
     private catalogService: CatalogService,
@@ -44,7 +44,6 @@ export class MenuManagementComponent implements OnInit {
     this.menuForm = this.fb.group({
       name: ['', Validators.required],
       description: ['', Validators.required],
-      categoryId: [null, Validators.required],
       imageUrl: [''],
     });
   }

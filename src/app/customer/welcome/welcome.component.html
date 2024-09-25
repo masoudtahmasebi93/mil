@@ -6,7 +6,7 @@
     <ng-container *ngFor="let men of menus;index as i ">
       <button mat-button [matMenuTriggerFor]="test">{{ men.name }}</button>
       <mat-menu #test="matMenu">
-        <button mat-menu-item *ngFor="let cid of men.categoryId; " [routerLink]="['/categories', cid]">{{
+        <button mat-menu-item *ngFor="let cid of getAllCategories(men.id); " [routerLink]="['/categories', cid.id]">{{
           getCategoryName(cid) ? getCategoryName(cid)?.name : '' }}</button>
       </mat-menu>
     </ng-container>
