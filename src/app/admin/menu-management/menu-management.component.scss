@@ -1,0 +1,24 @@
+.menu-management {
+  .menu-form {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+    margin-bottom: 20px;
+
+    mat-form-field {
+      width: 100%;
+    }
+
+    button {
+      margin-top: 10px;
+    }
+  }
+
+  .menu-table {
+    width: 100%;
+    overflow-x: auto;
+  }
+  .menu-image{
+    max-width: 200px;
+  }
+}

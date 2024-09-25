@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {
   CatalogService,
-  Category,
+  Category, MenuItem,
 } from '../../shared/services/catalog.service';
 import {CategoryListComponent} from '../category-list/category-list.component';
 import {CommonModule} from '@angular/common';
@@ -12,7 +12,7 @@ import {MatInput} from "@angular/material/input";
 import {MatButton} from "@angular/material/button";
 import {MatToolbar} from "@angular/material/toolbar";
 import {Router, RouterLink} from "@angular/router"; // Import MatOptionModule
-import { MatIcon } from '@angular/material/icon';
+import {MatIcon} from '@angular/material/icon';
 import {MatMenu, MatMenuItem, MatMenuTrigger} from "@angular/material/menu";
 
 @Component({
@@ -40,6 +40,7 @@ import {MatMenu, MatMenuItem, MatMenuTrigger} from "@angular/material/menu";
 })
 export class WelcomeComponent implements OnInit {
   categories: Category[] = [];
+  menus: MenuItem[] = [];
   catalogs: Category[] = []; // Catalogs for the dropdown
   filteredCategoriesList: Category[] = [];
 
@@ -57,7 +58,14 @@ export class WelcomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.loadMenus();
     this.loadCategories();
+  }
+
+  loadMenus(): void {
+    this.catalogService.getMenus().subscribe((menus: MenuItem[]) => {
+      this.menus = menus;
+    });
   }
 
   // Load categories from your service
@@ -98,5 +106,12 @@ export class WelcomeComponent implements OnInit {
   // Trigger filtering when the catalog is selected from the dropdown
   onCatalogChange(): void {
     this.filterCategories();
+  }
+
+  getCategoryName(cid: any) {
+    return this.categories.find((category) =>
+      category.id === cid
+    );
+
   }
 }

@@ -4,11 +4,20 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import {environment} from "../../environment";
 
+export interface MenuItem {
+  id: number;
+  name: string;
+  imageUrl?: string;
+  description?: string;
+  categoryId: any;
+}
+
 export interface Category {
   id: number;
   name: string;
   imageUrl?: string;
   description?: string;
+  menuId: number;
 }
 
 export interface ServiceItem {
@@ -67,4 +76,25 @@ export class CatalogService {
   deleteService(id: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/services/${id}`);
   }
+
+  // Menu methods
+  getMenus(): Observable<MenuItem[]> {
+    return this.http.get<MenuItem[]>(`${this.apiUrl}/menus`);
+  }
+
+  createMenu(menu: MenuItem): Observable<MenuItem> {
+    return this.http.post<MenuItem>(`${this.apiUrl}/menus`, menu);
+  }
+
+  updateMenu(category: MenuItem): Observable<MenuItem> {
+    return this.http.put<MenuItem>(
+      `${this.apiUrl}/menus/${category.id}`,
+      category
+    );
+  }
+
+  deleteMenu(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/menus/${id}`);
+  }
+
 }

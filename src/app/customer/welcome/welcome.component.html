@@ -1,17 +1,16 @@
 <mat-toolbar color="primary">
   <span>{{ title }}</span>
   &nbsp;
-  <span class="spacer">
-    &nbsp;
-     <button mat-stroked-button [matMenuTriggerFor]="menu" *ngFor="let item of filteredCategoriesList"
-             [routerLink]="['/categories', item.id]">&nbsp;{{ item.name }}&nbsp;</button>
-    &nbsp;
-  </span>
 
-  <mat-menu #menu="matMenu">
-    <button mat-menu-item>Item 1</button>
-    <button mat-menu-item>Item 2</button>
-  </mat-menu>
+  <span class="spacer">
+    <ng-container *ngFor="let men of menus;index as i ">
+      <button mat-button [matMenuTriggerFor]="test">{{ men.name }}</button>
+      <mat-menu #test="matMenu">
+        <button mat-menu-item *ngFor="let cid of men.categoryId; " [routerLink]="['/categories', cid]">{{
+          getCategoryName(cid) ? getCategoryName(cid)?.name : '' }}</button>
+      </mat-menu>
+    </ng-container>
+  </span>
   <button mat-button (click)="navigateToBooking()">Book Appointment</button>
 
 </mat-toolbar>
@@ -21,13 +20,8 @@
   <!-- Search input field -->
   <mat-form-field>
     <mat-label>Search categories...</mat-label>
-    <input
-      matInput
-      type="text"
-      placeholder="Search categories..."
-      [(ngModel)]="searchTerm"
-      (ngModelChange)="onSearchTermChange()"
-    />
+    <input matInput type="text" placeholder="Search categories..." [(ngModel)]="searchTerm"
+      (ngModelChange)="onSearchTermChange()" />
   </mat-form-field>
   <br>
   <!-- Dropdown for Catalog selection -->

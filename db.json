@@ -1,4 +1,27 @@
 {
+  "menus": [
+    {
+      "id": "16cd",
+      "name": "Red",
+      "description": "men desc1",
+      "categoryId": [
+        "4d2a",
+        "4b33",
+        "d746"
+      ],
+      "imageUrl": ""
+    },
+    {
+      "id": "8ec1",
+      "name": "Blue",
+      "description": "blue",
+      "categoryId": [
+        "4d2a",
+        "4b33"
+      ],
+      "imageUrl": ""
+    }
+  ],
   "categories": [
     {
       "id": "4d2a",
