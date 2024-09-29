@@ -5,7 +5,7 @@
   <form [formGroup]="menuForm" (ngSubmit)="submitMenu()" class="menu-form">
     <mat-form-field appearance="fill">
       <mat-label>Menu Name</mat-label>
-      <input matInput formControlName="name" required/>
+      <input matInput formControlName="name"/>
       <mat-error *ngIf="menuForm.get('name')?.hasError('required')">
         Menu name is required
       </mat-error>
@@ -13,7 +13,7 @@
 
     <mat-form-field appearance="fill">
       <mat-label>Description</mat-label>
-      <textarea matInput formControlName="description" required></textarea>
+      <textarea matInput formControlName="description"></textarea>
       <mat-error *ngIf="menuForm.get('description')?.hasError('required')">
         Description is required
       </mat-error>

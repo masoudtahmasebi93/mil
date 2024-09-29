@@ -22,3 +22,32 @@
     max-width: 200px;
   }
 }
+
+/* service-management.component.scss */
+
+.image-previews {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 16px;
+
+  .image-preview {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    margin-right: 8px;
+    margin-bottom: 8px;
+  }
+}
+
+.service-images {
+  display: flex;
+  flex-wrap: wrap;
+
+  .service-image {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    margin-right: 4px;
+    margin-bottom: 4px;
+  }
+}

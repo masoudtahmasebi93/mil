@@ -5,7 +5,7 @@
   <form [formGroup]="categoryForm" (ngSubmit)="submitCategory()" class="category-form">
     <mat-form-field appearance="fill">
       <mat-label>Category Name</mat-label>
-      <input matInput formControlName="name" required />
+      <input matInput formControlName="name" />
       <mat-error *ngIf="categoryForm.get('name')?.hasError('required')">
         Name is required
       </mat-error>
@@ -13,7 +13,7 @@
 
     <mat-form-field appearance="fill">
       <mat-label>Menu</mat-label>
-      <mat-select formControlName="menuId" required multiple>
+      <mat-select formControlName="menuId" multiple>
         <mat-option *ngFor="let menu of menus" [value]="menu.id">
           {{ menu.name }}
         </mat-option>

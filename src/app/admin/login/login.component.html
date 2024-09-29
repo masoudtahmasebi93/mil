@@ -10,7 +10,7 @@
       <form (ngSubmit)="onLogin()" #loginForm="ngForm">
         <mat-form-field appearance="fill" class="full-width">
           <mat-label>Username</mat-label>
-          <input matInput [(ngModel)]="username" name="username" required />
+          <input matInput [(ngModel)]="username" name="username" />
           <mat-error *ngIf="username === ''">Username is required</mat-error>
         </mat-form-field>
 

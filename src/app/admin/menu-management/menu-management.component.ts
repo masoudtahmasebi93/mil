@@ -42,8 +42,8 @@ export class MenuManagementComponent implements OnInit {
     private sanitizer: DomSanitizer
   ) {
     this.menuForm = this.fb.group({
-      name: ['', Validators.required],
-      description: ['', Validators.required],
+      name: [''],
+      description: [''],
       imageUrl: [''],
     });
   }

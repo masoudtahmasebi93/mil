@@ -1,27 +1,43 @@
-<mat-toolbar color="primary">
-  <span>{{ title }}</span>
-  &nbsp;
+<div style="background-color: black">
+  <h1 style="text-align: center;color: #d9c1a3;padding: 1rem">{{ title }}</h1>
+  <div class="spacer">
+    <!--    <ng-container *ngFor="let men of menus;index as i ">-->
+    <!--      <button mat-button [matMenuTriggerFor]="test">{{ men.name }}</button>-->
+    <!--      <mat-menu #test="matMenu">-->
+    <!--        <button mat-menu-item *ngFor="let cid of getAllCategories(men.id); " [routerLink]="['/categories', cid.id]">{{-->
+    <!--          getCategoryName(cid) ? getCategoryName(cid)?.name : '' }}</button>-->
+    <!--      </mat-menu>-->
+    <!--    </ng-container>-->
+    <mat-accordion class="example-flex-container" multi="false" *ngFor="let men of menus;index as i ">
+      <mat-expansion-panel >
+        <mat-expansion-panel-header>
+          <mat-panel-title> {{ men.name }}</mat-panel-title>
 
-  <span class="spacer">
-    <ng-container *ngFor="let men of menus;index as i ">
-      <button mat-button [matMenuTriggerFor]="test">{{ men.name }}</button>
-      <mat-menu #test="matMenu">
+          <!--      <mat-panel-description> This is a summary of the content </mat-panel-description>-->
+        </mat-expansion-panel-header>
         <button mat-menu-item *ngFor="let cid of getAllCategories(men.id); " [routerLink]="['/categories', cid.id]">{{
-          getCategoryName(cid) ? getCategoryName(cid)?.name : '' }}</button>
-      </mat-menu>
-    </ng-container>
-  </span>
-  <button mat-button (click)="navigateToBooking()">Book Appointment</button>
+            getCategoryName(cid) ? getCategoryName(cid)?.name : ''
+          }}
+        </button>
+      </mat-expansion-panel>
+    </mat-accordion>
+<!--    <mat-tab-group>-->
+<!--      <mat-tab label="First"> Content 1 </mat-tab>-->
+<!--      <mat-tab label="Second"> Content 2 </mat-tab>-->
+<!--      <mat-tab label="Third"> Content 3 </mat-tab>-->
+<!--    </mat-tab-group>-->
+  </div>
+  <!--  <button mat-button (click)="navigateToBooking()">Book Appointment</button>-->
 
-</mat-toolbar>
-<div class="welcome-container">
-  <h1>Welcome to Armani Nail Salon</h1>
+</div>
+<div class="welcome-container" style="background-color: black;padding: 25px">
+<!--  <h1>Welcome to Armani Nail Salon</h1>-->
 
   <!-- Search input field -->
   <mat-form-field>
     <mat-label>Search categories...</mat-label>
     <input matInput type="text" placeholder="Search categories..." [(ngModel)]="searchTerm"
-      (ngModelChange)="onSearchTermChange()" />
+           (ngModelChange)="onSearchTermChange()"/>
   </mat-form-field>
   <br>
   <!-- Dropdown for Catalog selection -->

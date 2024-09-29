@@ -34,11 +34,11 @@ export class AppointmentDetailComponent implements OnInit {
     private fb: FormBuilder
   ) {
     this.appointmentForm = this.fb.group({
-      name: ['', Validators.required],
-      contact: ['', [Validators.required, Validators.email]],
-      date: ['', Validators.required],
-      time: ['', Validators.required],
-      status: ['', Validators.required],
+      name: [''],
+      contact: ['', [ Validators.email]],
+      date: [''],
+      time: [''],
+      status: [''],
       notes: [''],
     });
   }

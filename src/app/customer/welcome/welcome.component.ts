@@ -14,6 +14,13 @@ import {MatToolbar} from "@angular/material/toolbar";
 import {Router, RouterLink} from "@angular/router"; // Import MatOptionModule
 import {MatIcon} from '@angular/material/icon';
 import {MatMenu, MatMenuItem, MatMenuTrigger} from "@angular/material/menu";
+import {
+  MatAccordion,
+  MatExpansionPanel,
+  MatExpansionPanelDescription, MatExpansionPanelHeader,
+  MatExpansionPanelTitle
+} from "@angular/material/expansion";
+import {MatTab, MatTabGroup} from "@angular/material/tabs";
 
 @Component({
   selector: 'app-welcome',
@@ -33,6 +40,13 @@ import {MatMenu, MatMenuItem, MatMenuTrigger} from "@angular/material/menu";
     MatMenuItem,
     MatMenuTrigger,
     RouterLink,
+    MatAccordion,
+    MatExpansionPanel,
+    MatExpansionPanelTitle,
+    MatExpansionPanelDescription,
+    MatExpansionPanelHeader,
+    MatTabGroup,
+    MatTab,
     // Include MatOptionModule
   ],
   templateUrl: './welcome.component.html',

@@ -52,6 +52,7 @@
     padding: 5px;
     margin: 5px;
     border-radius: 10px;
+    cursor: pointer;
   }
 }
 
@@ -105,7 +106,7 @@ section {
 
 .example-flex-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   flex-wrap: wrap;
 }
 
@@ -114,3 +115,22 @@ section {
   justify-content: center;
   width: 120px;
 }
+
+.mat-expansion-panel {
+  margin: 10px;
+  width: 150px;
+}
+
+@media screen and (max-width: 768px) {
+  .mat-expansion-panel {
+    margin: 10px;
+    width: 44%;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .spacer {
+    display: ruby;
+  }
+}
+

@@ -24,7 +24,7 @@ export interface ServiceItem {
   name: string;
   description: string;
   price: number;
-  imageUrl: string;
+  imageUrls: string[];
   categoryId: number;
 }
 
@@ -62,6 +62,7 @@ export class CatalogService {
   }
 
   createService(service: ServiceItem): Observable<ServiceItem> {
+    debugger;
     return this.http.post<ServiceItem>(`${this.apiUrl}/services`, service);
   }
 

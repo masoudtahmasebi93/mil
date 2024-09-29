@@ -10,12 +10,15 @@
         <mat-card-title>{{ service.name }}</mat-card-title>
         <mat-card-subtitle>${{ service.price }}</mat-card-subtitle>
       </mat-card-header>
-      <img
-        mat-card-image
-        [src]="service.imageUrl"
-        alt="{{ service.name }}"
-        *ngIf="service.imageUrl"
-      />
+      <div class="service-images">
+        <img
+          *ngFor="let imageUrl of service.imageUrls"
+          [src]="imageUrl"
+          alt="{{ service.name }}"
+          class="service-image"
+        />
+      </div>
+
       <mat-card-content>
         <p>{{ service.description }}</p>
       </mat-card-content>

@@ -39,8 +39,8 @@ export class CategoryManagementComponent implements OnInit {
     private fb: FormBuilder
   ) {
     this.categoryForm = this.fb.group({
-      name: ['', Validators.required],
-      menuId: ['', Validators.required],
+      name: [''],
+      menuId: [''],
     });
   }
 

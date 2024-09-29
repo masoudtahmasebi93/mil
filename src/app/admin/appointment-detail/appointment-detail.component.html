@@ -3,7 +3,7 @@
 <form [formGroup]="appointmentForm" (ngSubmit)="updateAppointment()">
   <mat-form-field appearance="fill">
     <mat-label>Name</mat-label>
-    <input matInput formControlName="name" required />
+    <input matInput formControlName="name" />
     <mat-error *ngIf="appointmentForm.get('name')?.hasError('required')">
       Name is required
     </mat-error>
@@ -11,7 +11,7 @@
 
   <mat-form-field appearance="fill">
     <mat-label>Contact Email</mat-label>
-    <input matInput formControlName="contact" required />
+    <input matInput formControlName="contact" />
     <mat-error *ngIf="appointmentForm.get('contact')?.hasError('required')">
       Contact email is required
     </mat-error>
@@ -22,7 +22,7 @@
 
   <mat-form-field appearance="fill">
     <mat-label>Date</mat-label>
-    <input matInput type="date" formControlName="date" required />
+    <input matInput type="date" formControlName="date" />
     <mat-error *ngIf="appointmentForm.get('date')?.hasError('required')">
       Date is required
     </mat-error>
@@ -30,7 +30,7 @@
 
   <mat-form-field appearance="fill">
     <mat-label>Time</mat-label>
-    <input matInput type="time" formControlName="time" required />
+    <input matInput type="time" formControlName="time" />
     <mat-error *ngIf="appointmentForm.get('time')?.hasError('required')">
       Time is required
     </mat-error>
@@ -38,7 +38,7 @@
 
   <mat-form-field appearance="fill">
     <mat-label>Status</mat-label>
-    <mat-select formControlName="status" required>
+    <mat-select formControlName="status">
       <mat-option *ngFor="let status of statuses" [value]="status">
         {{ status }}
       </mat-option>

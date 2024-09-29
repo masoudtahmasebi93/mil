@@ -33,7 +33,7 @@ export class ServiceManagementComponent implements OnInit {
   serviceForm: FormGroup;
   editingService: ServiceItem | null = null;
 
-  displayedColumns: string[] = ['name', 'category', 'price', 'image', 'actions'];
+  displayedColumns: string[] = ['name', 'category', 'price', 'images', 'actions'];
 
   constructor(
     private catalogService: CatalogService,
@@ -41,11 +41,11 @@ export class ServiceManagementComponent implements OnInit {
     private sanitizer: DomSanitizer
   ) {
     this.serviceForm = this.fb.group({
-      name: ['', Validators.required],
-      description: ['', Validators.required],
-      price: [0, Validators.required],
-      categoryId: [null, Validators.required],
-      imageUrl: [''],
+      name: [''],
+      description: [''],
+      price: [0],
+      categoryId: [null],
+      imageUrls: [''],
     });
   }
 
@@ -81,31 +81,64 @@ export class ServiceManagementComponent implements OnInit {
     }
   }
 
+  // onFileChange(event: any) {
+  //   const file = event.target.files[0];
+  //   if (file) {
+  //     // Convert the file to Base64 string
+  //     const reader = new FileReader();
+  //     reader.onload = () => {
+  //       this.serviceForm.patchValue({
+  //         imageUrl: reader.result as string,
+  //       });
+  //     };
+  //     reader.readAsDataURL(file);
+  //   }
+  // }
   onFileChange(event: any) {
-    // const inputNode: any = document.querySelector('#file');
-    //
-    // if (typeof (FileReader) !== 'undefined') {
-    //   const reader = new FileReader();
-    //
-    //   reader.onload = (e: any) => {
-    //     this.srcResult = e.target.result;
-    //   };
-    //
-    //   reader.readAsArrayBuffer(inputNode.files[0]);
-    // }
-    const file = event.target.files[0];
-    if (file) {
-      // Convert the file to Base64 string
-      const reader = new FileReader();
-      reader.onload = () => {
-        this.serviceForm.patchValue({
-          imageUrl: reader.result as string,
+    const files = event.target.files;
+    if (files && files.length > 0) {
+      const imagePromises = [];
+      for (let i = 0; i < files.length; i++) {
+        const file = files[i];
+        const reader = new FileReader();
+        const promise = new Promise<string>((resolve) => {
+          reader.onload = () => {
+            resolve(reader.result as string);
+          };
+          debugger;
+          reader.readAsDataURL(file);
         });
-      };
-      reader.readAsDataURL(file);
+        imagePromises.push(promise);
+      }
+      Promise.all(imagePromises).then((images) => {
+        this.serviceForm.patchValue({
+          imageUrls: images,
+        });
+      });
     }
   }
 
+
+  // submitService() {
+  //   if (this.serviceForm.valid) {
+  //     const serviceData = this.serviceForm.value;
+  //     if (this.editingService) {
+  //       const updatedService = {
+  //         ...this.editingService,
+  //         ...serviceData,
+  //       };
+  //       this.catalogService.updateService(updatedService).subscribe(() => {
+  //         this.resetForm();
+  //         this.loadServices();
+  //       });
+  //     } else {
+  //       this.catalogService.createService(serviceData).subscribe(() => {
+  //         this.resetForm();
+  //         this.loadServices();
+  //       });
+  //     }
+  //   }
+  // }
   submitService() {
     if (this.serviceForm.valid) {
       const serviceData = this.serviceForm.value;
